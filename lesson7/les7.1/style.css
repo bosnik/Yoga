@@ -1,0 +1,10 @@
+.bg{
+    background-color: black;
+}
+.timer{
+    color: white;
+    font-size: 20vw;
+    margin-left: 50%;
+    transform: translateX(-70%);
+    
+}
