@@ -35,3 +35,11 @@ window.addEventListener('DOMContentLoaded', function() {
         });
 
 }); 
+window.scrollTo(1000, 0 );
+
+// этот код меняет поведение прокрутки на "smooth"
+window.scrollTo({
+    top: 1000,
+    botton: 1000,
+    behavior: "smooth"
+});
