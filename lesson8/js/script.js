@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
         // Timer
 
-        let deadline = '2019-05-4';
+        let deadline = '2019-05-06';
 
         function getTimeRemaning(endtime) {
             let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -80,6 +80,5 @@ window.addEventListener('DOMContentLoaded', function() {
 
         setClock('timer', deadline);
 }); 
-
 
 
