@@ -82,30 +82,37 @@ window.addEventListener('DOMContentLoaded', function() {
 
         //Modal Window
 
-        let more = document.querySelector('.more'),
-            overlay = document.querySelector('.overlay'),
-            close = document.querySelector('.popup-close');
+        function modal() {
+            let overlay = document.querySelector(".overlay"),
+                body = document.querySelector("body");
+        
+            function showModal() {
+                overlay.style.display = "block";
+                info.classList.add("more-splash");
+                document.body.style.overflow = "hidden";
+            }
+        
+            function hideModal() {
+                overlay.style.display = "none";
+                info.classList.remove("more-splash");
+                document.body.style.overflow = "";
 
-        more.addEventListener('click', function() {
-            overlay.style.display = 'block';
-            this.classList.add('more-splash');
-            document.body.style.overflow = ('hidden');
-        });
-        close.addEventListener('click', function() {
-            overlay.style.display = 'none';
-            more.classList.remove('more-splash');
-            document.body.style.overflow = ('');
-        });
+            }
+            body.addEventListener("click", function forEach(elem){ 
+                let target = elem.target;
+        
+                if (target && target.classList.contains("more")) {
+                    showModal(target);
+                }
+                if (target && target.classList.contains("popup-close")) {
+                    hideModal(target);
+                }
+                if (target && target.classList.contains("description-btn")) {
+                    showModal(target);
+                }
+            });
+        }
+        modal();
 }); 
 
-
-
-let age = document.getElementById('.age');
-    
-function showUser(surname, name) {
-    age.classList();
-         alert("Пользователь " +  surname + " " + name + ", его возраст " + this.value);
-}
-
-
-showUser('Makr', 'Kru', );
+ 
