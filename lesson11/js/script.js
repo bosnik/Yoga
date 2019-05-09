@@ -112,9 +112,9 @@ window.addEventListener('DOMContentLoaded', function() {
             //Form
 
             let message = {
-                loading: "https://www.flaticon.com/authors/maxim-basinski",
-                success: 'Спасибо! скоро мы с вами свяжемся!',
-                failure: 'Что-то пошло не так...'
+                loading: `<img src = 'img/ajax-loader.gif'>`,
+                success: `<img src = 'img/success.png'>`,
+                failure: `<'img/error.png'`
             };
 
             let form = document.querySelector('.main-form'),
