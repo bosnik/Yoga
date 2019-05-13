@@ -114,7 +114,7 @@ window.addEventListener('DOMContentLoaded', function() {
             let message = {
                 loading: `<img src = 'img/ajax-loader.gif'>`,
                 success: `<img src = 'img/success.png'>`,
-                failure: `<'img/error.png'`
+                failure: `<'img/error.png'>`
             };
 
             let form = document.querySelector('.main-form'),
@@ -123,10 +123,10 @@ window.addEventListener('DOMContentLoaded', function() {
             statusMessege = document.createElement('div');
 
             statusMessege.classList.add('status');
-        function formConact(elem) {
-            elem.addEventListener('submit', function(event){
+        function formConact() {
+            form.addEventListener('submit', function(){
                 event.preventDefault();
-                elem.appendChild(statusMessege);
+                form.appendChild(statusMessege);
                 
 
                 let request = new XMLHttpRequest();
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', function() {
                /*  request.setRequestHeader('Content-Type', 'application/x-ww-form-urlencoded'); */
                 request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-                let formData = new FormData(elem);
+                let formData = new FormData(form);
 
                 let obj = {};
                 formData.forEach(function(value, key) {
@@ -162,7 +162,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
-            formConact(form);
+            formConact(this);
             formConact(contactForm);
 
                 //Validator phone
@@ -172,15 +172,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
             function onlyNumber(input) {
                 input.onkeydown = function () {
-                return (this.value = this.value.replace(/[^0-9]/g, ""));
+                return (this.value = this.value.replace(/^[^+0-9]$/g, ""));
                 };
                 }
-                inputsPhone.forEach(function(elem){
-                onlyNumber(elem);
-              });
-                inputsCounter.forEach(function(elem){
-                onlyNumber(elem);
-        }); 
+                inputsPhone.forEach(elem => onlyNumber(elem));
+                inputsCounter.forEach(elem => onlyNumber(elem)); 
 
 }); 
 
