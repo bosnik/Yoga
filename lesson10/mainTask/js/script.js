@@ -5,23 +5,23 @@ window.addEventListener('DOMContentLoaded', function() {
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
 
-        function hideTabContent(a) {
-            for(let i = a; i < tabContent.length; i++) {
-                tabContent[i].classList.remove('show');
-                tabContent[i].classList.add('hide');
-            }
-        }
+    let hideTabContent = (a) => {
+         for(let i = a; i < tabContent.length; i++) {
+         tabContent[i].classList.remove('show');
+         tabContent[i].classList.add('hide');
+    }
+};
 
         hideTabContent(1);
 
-        function showTabContent (b) {
-            if(tabContent[b].classList.contains('hide')) {
-                tabContent[b].classList.remove('hide');
-                tabContent[b].classList.add('show');
+    let showTabContent = (b) => {
+         if(tabContent[b].classList.contains('hide')) {
+             tabContent[b].classList.remove('hide');
+             tabContent[b].classList.add('show');
             }
-        }
+        };
 
-        info.addEventListener('click', function(event) {
+        info.addEventListener('click', event => {
             let target = event.target;
             if(target && target.classList.contains('info-header-tab')) {
                 for(let i = 0; i < tab.length; i++) {
@@ -85,12 +85,12 @@ window.addEventListener('DOMContentLoaded', function() {
             let overlay = document.querySelector(".overlay"),
                 body = document.querySelector("body");
         
-            function showModal() {
+            let showModal = function() {
                 overlay.style.display = "block";
                 info.classList.add("more-splash");
                 document.body.style.overflow = "hidden";
             }
-            function hideModal() {
+           let hideModal = function()  {
                 overlay.style.display = "none";
                 info.classList.remove("more-splash");
                 document.body.style.overflow = "";

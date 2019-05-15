@@ -5,21 +5,21 @@ window.addEventListener('DOMContentLoaded', function() {
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
 
-        function hideTabContent(a) {
-            for(let i = a; i < tabContent.length; i++) {
-                tabContent[i].classList.remove('show');
-                tabContent[i].classList.add('hide');
-            }
-        }
+        let hideTabContent = (a) => {
+         for(let i = a; i < tabContent.length; i++) {
+         tabContent[i].classList.remove('show');
+         tabContent[i].classList.add('hide');
+    }
+};
 
         hideTabContent(1);
 
-        function showTabContent (b) {
-            if(tabContent[b].classList.contains('hide')) {
-                tabContent[b].classList.remove('hide');
-                tabContent[b].classList.add('show');
+    let showTabContent = (b) => {
+         if(tabContent[b].classList.contains('hide')) {
+             tabContent[b].classList.remove('hide');
+             tabContent[b].classList.add('show');
             }
-        }
+        };
 
         info.addEventListener('click', function(event) {
             let target = event.target;
@@ -85,16 +85,16 @@ window.addEventListener('DOMContentLoaded', function() {
             let overlay = document.querySelector(".overlay"),
                 body = document.querySelector("body");
         
-            function showModal() {
-                overlay.style.display = "block";
-                info.classList.add("more-splash");
-                document.body.style.overflow = "hidden";
-            }
-            function hideModal() {
-                overlay.style.display = "none";
-                info.classList.remove("more-splash");
-                document.body.style.overflow = "";
-            }
+                let showModal = function() {
+                    overlay.style.display = "block";
+                    info.classList.add("more-splash");
+                    document.body.style.overflow = "hidden";
+                };
+                let hideModal = function()  {
+                    overlay.style.display = "none";
+                    info.classList.remove("more-splash");
+                    document.body.style.overflow = "";
+            };
             body.addEventListener("click", function forEach(elem){ 
                 let target = elem.target;
         
@@ -123,10 +123,11 @@ window.addEventListener('DOMContentLoaded', function() {
             statusMessege = document.createElement('div');
 
             statusMessege.classList.add('status');
-        function formConact() {
-            form.addEventListener('submit', function(){
+        function formConact(elem) {
+            elem.addEventListener( function(){
+                form.submit();
                 event.preventDefault();
-                form.appendChild(statusMessege);
+                elem.appendChild(statusMessege);
                 
 
                 let request = new XMLHttpRequest();
@@ -134,7 +135,7 @@ window.addEventListener('DOMContentLoaded', function() {
                /*  request.setRequestHeader('Content-Type', 'application/x-ww-form-urlencoded'); */
                 request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-                let formData = new FormData(form);
+                let formData = new FormData(elem);
 
                 let obj = {};
                 formData.forEach(function(value, key) {
@@ -167,16 +168,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
                 //Validator phone
 
-            let inputsPhone = document.querySelectorAll('popup-form__input'),
-                inputsCounter = document.querySelectorAll('input[type="tel"]');
-
-            function onlyNumber(input) {
-                input.onkeydown = function () {
-                return (this.value = this.value.replace(/^[^+0-9]$/g, ""));
-                };
-                }
-                inputsPhone.forEach(elem => onlyNumber(elem));
-                inputsCounter.forEach(elem => onlyNumber(elem)); 
+                document.body.addEventListener('input', e => {
+                    if (e.target.getAttribute('type') === 'tel') {
+                        e.target.value = '+' + e.target.value.replace(/[^\d]/g, '').slice(0, 11);
+                        if (e.target.value.length == 1) e.target.value = '';
+                    }
+                });
 
 }); 
 
