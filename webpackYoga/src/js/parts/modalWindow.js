@@ -1,6 +1,7 @@
 function modalWindow() {
-    let overlay = document.querySelector(".overlay"),
-    body = document.querySelector("body");
+    let info = document.querySelector(".info"),
+        overlay = document.querySelector(".overlay"),
+        body = document.querySelector("body");
     
     let showModal = function() {
         overlay.style.display = "block";

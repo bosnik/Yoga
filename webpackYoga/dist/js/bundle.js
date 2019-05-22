@@ -162,7 +162,7 @@ function form() {
     
     let form = document.querySelector('.main-form'),
     input = document.getElementsByTagName('input'),
-    contactForm = document.querySelector('.contact-form'),
+    contactForm = document.getElementById('form'),
     statusMessege = document.createElement('div');
     
     statusMessege.classList.add('status');
@@ -184,6 +184,16 @@ function form() {
                         "Content-Type",
                         "application/json; charset=utf-8"
                     );
+
+                    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                    let obj = {}; // 
+                    data.forEach(function (value, key) {
+                        obj[key] = value;
+                    });
+                   
+                    let json = JSON.stringify(obj); 
+
+                    request.send(json);
     
                     request.onreadystatechange = function () {
                         if (request.readyState < 4) {
@@ -196,7 +206,7 @@ function form() {
                             }
                         }
                     };
-                    request.send(data);
+
                 });
             } 
     
@@ -229,8 +239,9 @@ module.exports = form;
 /***/ (function(module, exports) {
 
 function modalWindow() {
-    let overlay = document.querySelector(".overlay"),
-    body = document.querySelector("body");
+    let info = document.querySelector(".info"),
+        overlay = document.querySelector(".overlay"),
+        body = document.querySelector("body");
     
     let showModal = function() {
         overlay.style.display = "block";

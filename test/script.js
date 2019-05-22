@@ -40,16 +40,16 @@ describe('each', function(){
     it('each в данных условиях возвращает массив [ 8, 7, 6, 5, 4 ]', function(){
         assert.typeOf(each(arrq, myFunc), 'array');
     });
-    it('each  ', function(){
-        assert.equal(each(arrq, myFunc), 8, 7, 6, 5, 4);
+    it('соответствие ожидаемому результату ', function(){
+        assert.equal(each(newArr), [8,7,6,5,4]);
     });
     
-    it('each данных условиях возвращает массив ', function(){
+    it('свойство length ', function(){
         assert.lengthOf(each(arrq, myFunc), 5);
     });
 });
 describe('each', function(){
-    it('each в данных условиях возвращает массив [ 8, 7, 6, 5, 4 ]', function(){
-        assert.typeOf(each(arrq, myFunc), 'array');
+    it('each [ 8, 7, 6, 5, 4 ]', function(){
+        assert.typeOf(each(arrq, myFunc), '');
     });
 });

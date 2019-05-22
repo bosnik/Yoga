@@ -83,30 +83,21 @@ window.addEventListener('DOMContentLoaded', function() {
         //Modal Window
 
             let overlay = document.querySelector(".overlay"),
-                body = document.querySelector("body");
-        
-            function showModal() {
-                overlay.style.display = "block";
-                info.classList.add("more-splash");
-                document.body.style.overflow = "hidden";
-            }
-            function hideModal() {
-                overlay.style.display = "none";
-                info.classList.remove("more-splash");
-                document.body.style.overflow = "";
-            }
-            body.addEventListener("click", function forEach(elem){ 
-                let target = elem.target;
-        
-                if (target && target.classList.contains("more")) {
-                    showModal(target);
-                }
-                if (target && target.classList.contains("popup-close")) {
-                    hideModal(target);
-                }
-                if (target && target.classList.contains("description-btn")) {
-                    showModal(target);
-                }
+                isActiveBtn;
+
+            const bindModal = (overlayStatus,overflowStatus,classListMethod,el) => {
+                if(classListMethod == 'add') isActiveBtn = el;
+                if(!el) el = isActiveBtn;
+                overlay.style.display = overlayStatus;
+                el.classList[classListMethod]('more-splash');
+                document.body.style.overflow = overflowStatus;
+            };
+
+            document.body.addEventListener('click' , e => {
+                let target = e.target;
+
+                if(target.classList.contains('more') || target.classList.contains('description-btn')) bindModal('block','hidden','add',target);
+                if(target.classList.contains('popup-close')) bindModal('none','','remove');
             }); 
 }); 
 
